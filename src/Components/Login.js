@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+
 
  import './Login.css';
  import { useDispatch } from 'react-redux';
@@ -27,7 +27,7 @@ const Login = () => {
       })) 
       console.log(data);
       setData({ email: '', password: '' });
-      <Navigate to='/todo'/>
+      
       return;
     }
     alert('Enter email or password');
