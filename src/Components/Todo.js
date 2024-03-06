@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addtodo, deleteTodo } from '../Slices/todoSlicer';
 import { nanoid } from '@reduxjs/toolkit';
@@ -8,6 +8,7 @@ import { faTrashAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
 import './Todo.css'; // Import the CSS file
 
 const Todo = () => {
+  const navigate = useNavigate();
   const arr = useSelector((state) => state.todo);
   const dispatch = useDispatch();
   const [data, setData] = useState('');
@@ -24,11 +25,20 @@ const Todo = () => {
     }
   };
 
+
+  const handleLogout = () => {
+    // Perform any logout-related actions here
+
+    // Navigate to the login page
+    navigate('/login');
+  };
+
+
   return (
     <>
       <nav className="">
         <Link to='/'>
-          <button className="logout-button">Logout</button>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
         </Link>
       </nav>
       <div className="todo-container">
