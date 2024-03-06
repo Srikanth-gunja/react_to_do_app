@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter,Route, Routes } from 'react-router-dom';
+import Login from './Components/Login';
+import Register from './Components/Register';
+import Todo from './Components/Todo';
+export default function App() {
+  const isAuthenticated=true;
+ 
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+       <Routes>
+           <Route path='/' element={<Login></Login>} />
+           <Route path='/register' element={<Register></Register>} />
+           <Route path='/Todo' element={isAuthenticated?(<Todo></Todo>):(<Login></Login>)}/>
+           
+           
+           
+        </Routes>
+    </BrowserRouter>
+    </>
   );
 }
-
-export default App;
